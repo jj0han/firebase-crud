@@ -39,7 +39,8 @@ export default function Home({ data, setData, addUser, deleteUser, all}) {
             <Form name={data.name} age={data.age} action={addUser} data={data} setData={setData} />
             <div className='user-container'>
                 <h2 className='users-title'>usuários</h2>
-                <input className='input' value={search} onChange={handleSearch} placeholder="procurar" type="text" />
+                <input className='input' value={search} placeholder="procurar" type="text" />
+                <button value={search} onClick={handleSearch}></button>
                 <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
                 {all}
             </div>
