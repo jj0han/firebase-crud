@@ -12,7 +12,7 @@ export default function Update({ id, name, age }) {
         e.preventDefault()
         try {
             await updateDoc(doc(db, "data", id), data)
-            navigate('/')
+            navigate('/firebase-crud')
         } catch (err) {
             console.log(err)
         }
@@ -22,7 +22,7 @@ export default function Update({ id, name, age }) {
         <div>
             <p>Updating <strong>{name}:</strong></p>
             <Form name={data.name} age={data.age} action={updateUser} data={data} setData={setData} />
-            <Link to={'/'}>Cancel</Link>
+            <Link to={'/firebase-crud'}>Cancel</Link>
         </div>
     )
 }

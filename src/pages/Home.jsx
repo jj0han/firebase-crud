@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { endAt, orderBy, query, startAt } from 'firebase/firestore'
+import { orderBy, query, where } from 'firebase/firestore'
 import { getDocs, collection, db } from '../firebase'
 import Form from '../layouts/Form'
 
-export default function Home({ data, setData, addUser, deleteUser, all}) {
+export default function Home({ getUsers, setGetUsers, data, setData, addUser, deleteUser, all }) {
     const [search, setSearch] = useState("")
     const ref = collection(db, "data")
 
@@ -12,13 +12,13 @@ export default function Home({ data, setData, addUser, deleteUser, all}) {
     }
 
     useEffect(() => {
-        const readUsers = async (setGetUsers, search) => {
+        const readUsers = async (search) => {
             let users = ""
             try {
-                if (search !== "" && search !== undefined) {
-                    users = await getDocs(query(ref, orderBy("name"), startAt(search), endAt(search)))
-                } else {
+                if (search.trim() === "") {
                     users = await getDocs(query(ref, orderBy("name")))
+                } else {
+                    users = await getDocs(query(ref, where("name", "==", search)))
                 }
 
                 setGetUsers([])
@@ -30,8 +30,8 @@ export default function Home({ data, setData, addUser, deleteUser, all}) {
                 console.log(err)
             }
         }
-        readUsers()
-    }, [addUser, deleteUser, search, ref])
+        readUsers(search)
+    }, [addUser, deleteUser, search, ref, setGetUsers])
 
     return (
         <div className="App">
@@ -39,8 +39,7 @@ export default function Home({ data, setData, addUser, deleteUser, all}) {
             <Form name={data.name} age={data.age} action={addUser} data={data} setData={setData} />
             <div className='user-container'>
                 <h2 className='users-title'>usuários</h2>
-                <input className='input' value={search} placeholder="procurar" type="text" />
-                <button value={search} onClick={handleSearch}></button>
+                <input className='input' value={search} onChange={handleSearch} placeholder="procurar" type="text" />
                 <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
                 {all}
             </div>

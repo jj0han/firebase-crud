@@ -1,6 +1,6 @@
 import './App.css'
 import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import { addDoc, deleteDoc, collection, db, doc } from './firebase'
 import Update from './pages/Update'
 import Home from './pages/Home'
@@ -65,7 +65,8 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<Home getUsers={getUsers} setGetUsers={setGetUsers} data={data} addUser={addUser} setData={setData} all={all} deleteUser={deleteUser} updateUser={updateUser} />} />
+      <Route path='*' element={<Navigate to={"/firebase-crud"}/>}/>
+      <Route path='/firebase-crud' element={<Home getUsers={getUsers} setGetUsers={setGetUsers} data={data} addUser={addUser} setData={setData} all={all} deleteUser={deleteUser} updateUser={updateUser} />} />
       <Route path='update/*' element={<Update id={updateData.id} name={updateData.name} age={updateData.age} />} />
     </Routes>
   )
