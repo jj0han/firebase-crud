@@ -8,8 +8,8 @@ export default function Form({ name, age, action, data, setData }) {
 
   return (
     <form className='form' onSubmit={action}>
-      <input required={true} className='input' onChange={handleChange} placeholder={"name"} value={name} name='name' type="text" />
-      <input required={true} className='input' onChange={handleChange} placeholder={"age"} value={age} name='age' type="number" />
+      <input required={true} className='input' onChange={handleChange} placeholder={"Info"} value={name} name='name' type="text" />
+      <input required={true} className='input' onChange={handleChange} placeholder={"Number"} value={age} name='age' type="number" />
       <button className='button-submit' type="submit">Submit</button>
     </form>
   )

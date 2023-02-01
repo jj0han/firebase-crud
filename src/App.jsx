@@ -54,7 +54,7 @@ export default function App() {
   const all = getUsers.map((doc) => {
     return (
       <div className='user-info' key={doc.id}>
-        <p>Nome: {doc.name}, Idade: {doc.age}</p>
+        <p>{doc.name}<br/>{doc.age}</p>
         <div>
           <Link onClick={updateUser} to={`/update/${doc.id}`} className='button-update' id={doc.id}>Update</Link>
           <button className='button-delete' id={doc.id} onClick={deleteUser}>Delete</button>
