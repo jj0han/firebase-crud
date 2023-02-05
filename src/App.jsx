@@ -6,19 +6,19 @@ import Update from './pages/Update'
 import Home from './pages/Home'
 
 export default function App() {
-  const [data, setData] = useState({ id: "", name: "", age: undefined })
-  const [updateData, setUpdateData] = useState({ id: "", name: "", age: undefined })
+  const [data, setData] = useState({ id: "", name: "" })
+  const [updateData, setUpdateData] = useState({ id: "", name: ""})
   const [getUsers, setGetUsers] = useState([])
   const ref = collection(db, "data")
 
   function clearInputs() {
-    setData({ id: "", name: "", age: 0 })
+    setData({ id: "", name: ""})
   }
 
   const addUser = async (e) => {
     e.preventDefault()
     try {
-      await addDoc(ref, { name: data.name, age: data.age })
+      await addDoc(ref, { name: data.name, date: Date.now() })
       clearInputs()
       setGetUsers([])
     } catch (err) {
@@ -41,14 +41,12 @@ export default function App() {
   const updateUser = async (e) => {
     const id = e.target.id
     let name
-    let age
     getUsers.forEach((user) => {
       if (user.id === id) {
         name = user.name
-        age = user.age
       }
     })
-    setUpdateData({ id: id, name: name, age: age })
+    setUpdateData({ id: id, name: name})
   }
 
   const all = getUsers.map((doc) => {
@@ -66,7 +64,7 @@ export default function App() {
   return (
     <Routes>
       <Route path='*' element={<Navigate to={"/firebase-crud"}/>}/>
-      <Route path='/firebase-crud' element={<Home getUsers={getUsers} setGetUsers={setGetUsers} data={data} addUser={addUser} setData={setData} all={all} deleteUser={deleteUser} updateUser={updateUser} />} />
+      <Route path='/firebase-crud' element={<Home getUsers={getUsers} setGetUsers={setGetUsers} data={data} setData={setData} addUser={addUser} deleteUser={deleteUser} all={all} />} />
       <Route path='update/*' element={<Update id={updateData.id} name={updateData.name} age={updateData.age} />} />
     </Routes>
   )
