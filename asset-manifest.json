@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/firebase-crud/static/css/main.4a85a6cb.css",
-    "main.js": "/firebase-crud/static/js/main.754f8129.js",
+    "main.css": "/firebase-crud/static/css/main.54fa0a18.css",
+    "main.js": "/firebase-crud/static/js/main.84707bca.js",
     "index.html": "/firebase-crud/index.html",
-    "main.4a85a6cb.css.map": "/firebase-crud/static/css/main.4a85a6cb.css.map",
-    "main.754f8129.js.map": "/firebase-crud/static/js/main.754f8129.js.map"
+    "main.54fa0a18.css.map": "/firebase-crud/static/css/main.54fa0a18.css.map",
+    "main.84707bca.js.map": "/firebase-crud/static/js/main.84707bca.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a85a6cb.css",
-    "static/js/main.754f8129.js"
+    "static/css/main.54fa0a18.css",
+    "static/js/main.84707bca.js"
   ]
 }
