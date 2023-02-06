@@ -3,7 +3,7 @@ import { orderBy, query, where } from 'firebase/firestore'
 import { getDocs, collection, db } from '../firebase'
 import Form from '../layouts/Form'
 
-export default function Home({ getUsers, setGetUsers, data, setData, addUser, all }) {
+export default function Home({ setGetUsers, data, setData, addUser, all }) {
     const [search, setSearch] = useState("")
 
     function handleSearch(e) {
@@ -27,18 +27,20 @@ export default function Home({ getUsers, setGetUsers, data, setData, addUser, al
                 })
                 document.querySelector('.lds-ring').style.display = "none"
             } catch (err) {
-                console.log(err)
+                window.alert("Não foi possível acessar o banco de dados no momento, por favor tente mais tarde...")
             }
         }
         readUsers(search)
-    }, [search, getUsers, setGetUsers, addUser])
+        const messages = document.querySelector(".messages")
+        messages.scrollTop = messages.scrollHeight
+    }, [search, setGetUsers, addUser])
 
     return (
         <div className="App">
             <div className='user-container'>
                 <input className='search' value={search} onChange={handleSearch} placeholder="procurar" type="text" />
                 <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
-                {all}
+                <div className='messages'>{all}</div>
                 <Form name={data.name} action={addUser} data={data} setData={setData} />
             </div>
         </div>
