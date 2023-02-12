@@ -17,26 +17,26 @@
 }
 
 .form:has(> .input:focus) {
-  border: 1px solid white;
+  border: 1px solid #b9bbbe;
 }
- 
+
 .input {
   border-radius: 9px 0 0 9px;
   padding: 15px;
   flex-grow: 1;
-  background-color: #585a5c;
+  background-color: #40444b;
 }
 
 .search {
   border: 1px solid transparent;
   border-radius: 9px;
   padding: 15px;
-  background-color: #585a5c;
+  background-color: #40444b;
   transition: .3s ease-out;
 }
 
 .search:focus {
-  border: 1px solid white;
+  border: 1px solid #b9bbbe;
 }
 
 .messages {
@@ -47,7 +47,7 @@
 .user-container {
   display: flex;
   flex-direction: column;
-  background-color: #424549;
+  background-color: #36393f;
   height: 100%;
   padding: 20px;
 }
@@ -65,12 +65,12 @@
 }
 
 .user-info:hover {
-  background-color: #3d3e41;
+  background-color: #36393f;
 }
 
 .button-submit {
   padding: 15px;
-  background-color: #585a5c;
+  background-color: #40444b;
   color: #d1d1d1;
   font-weight: bold;
   border-radius: 0 9px 9px 0;
@@ -78,8 +78,8 @@
 }
 
 .button-submit:hover {
-  background-color: #d1d1d1;
-  color: #585a5c;
+  background-color: #b9bbbe;
+  color: #40444b;
 }
 
 .button-delete {
@@ -89,7 +89,6 @@
 }
 
 .button-update {
-  border-radius: 7px;
   background-color: limegreen;
   color: white;
   padding: 5px;
@@ -111,22 +110,22 @@
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid rgb(27, 27, 27);
+  border: 5px solid #b9bbbe;
   border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: rgb(27, 27, 27) transparent transparent transparent;
+  animation: lds-ring .9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #b9bbbe transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
+  animation-delay: -0.1s;
 }
 
 .lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
+  animation-delay: -0.15s;
 }
 
 .lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
+  animation-delay: -0.2s;
 }
 
 @keyframes lds-ring {

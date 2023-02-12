@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { updateDoc, doc, db } from '../firebase'
 import Form from '../layouts/Form'
 
-export default function Update({ id, name, age }) {
+export default function Update({ id, name }) {
     const [data, setData] = useState({ id: id, name: name })
     const navigate = useNavigate()
 

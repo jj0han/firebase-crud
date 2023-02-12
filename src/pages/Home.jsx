@@ -31,14 +31,18 @@ export default function Home({ setGetUsers, data, setData, addUser, all }) {
             }
         }
         readUsers(search)
-        const messages = document.querySelector(".messages")
-        messages.scrollTop = messages.scrollHeight
+        
     }, [search, setGetUsers, addUser])
+
+    // useEffect(() => {
+    //     const messages = document.querySelector(".messages")
+    //     messages.scrollTop = messages.scrollHeight
+    // }, [])
 
     return (
         <div className="App">
             <div className='user-container'>
-                <input className='search' value={search} onChange={handleSearch} placeholder="procurar" type="text" />
+                <input className='search' value={search} onChange={handleSearch} placeholder="Search" type="text" />
                 <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
                 <div className='messages'>{all}</div>
                 <Form name={data.name} action={addUser} data={data} setData={setData} />
