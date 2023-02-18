@@ -1,6 +1,28 @@
 .App {
   height: calc(100% - 20px);
   width: 100%;
+  display: flex;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #2f3136;
+  height: 100%;
+}
+
+.button-signout {
+  background-color: #292b2f;
+  padding: 10px;
+  width: 100%;
+}
+
+.button-cancel {
+  background-color: #292b2f;
+  padding: 10px;
+  width: fit-content;
 }
 
 .title {
@@ -46,6 +68,7 @@
 
 .user-container {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   background-color: #36393f;
   height: 100%;

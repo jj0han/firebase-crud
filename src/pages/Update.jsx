@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { updateDoc, doc, db } from '../firebase'
 import Form from '../layouts/Form'
 
-export default function Update({ id, name }) {
-    const [data, setData] = useState({ id: id, name: name })
+export default function Update({ id, text }) {
+    const [data, setData] = useState({ id: id, text: text })
     const navigate = useNavigate()
 
     const updateUser = async (e) => {
@@ -19,10 +19,11 @@ export default function Update({ id, name }) {
     }
 
     return (
-        <div>
-            <p>Updating <strong>{name}:</strong></p>
-            <Form name={data.name} action={updateUser} data={data} setData={setData} />
-            <Link to={'/firebase-crud'}>Cancel</Link>
+        <div className='user-container'>
+            <p>Updating <strong>{text}:</strong></p>
+            <Form text={data.text} action={updateUser} data={data} setData={setData} />
+            <br/>
+            <Link to={'/firebase-crud'} className="button-cancel">Cancel</Link>
         </div>
     )
 }
