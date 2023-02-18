@@ -3,7 +3,7 @@ import { orderBy, query, where } from 'firebase/firestore'
 import { getDocs, collection, db } from '../firebase'
 import Form from '../layouts/Form'
 
-export default function Home({ name, handleSignOut, setGetUsers, data, setData, addUser, all }) {
+export default function Home({ sync, handleSignOut, setGetUsers, data, setData, addUser, all }) {
     const [search, setSearch] = useState("")
 
     function handleSearch(e) {
@@ -12,6 +12,7 @@ export default function Home({ name, handleSignOut, setGetUsers, data, setData, 
 
     useEffect(() => {
         const ref = collection(db, "data")
+
         const readUsers = async (search) => {
             let users = ""
             try {
@@ -23,7 +24,7 @@ export default function Home({ name, handleSignOut, setGetUsers, data, setData, 
 
                 setGetUsers([])
                 users.forEach((doc) => {
-                    setGetUsers(old => [...old, { id: doc.id, pic: doc.data().pic, text: doc.data().text }])
+                    setGetUsers(old => [...old, { id: doc.id, userName: doc.data().userName, pic: doc.data().pic, text: doc.data().text, uid: doc.data().uid }])
                 })
                 document.querySelector('.lds-ring').style.display = "none"
             } catch (err) {
@@ -31,13 +32,8 @@ export default function Home({ name, handleSignOut, setGetUsers, data, setData, 
             }
         }
         readUsers(search)
-        
-    }, [search, setGetUsers, addUser])
 
-    // useEffect(() => {
-    //     const messages = document.querySelector(".messages")
-    //     messages.scrollTop = messages.scrollHeight
-    // }, [])
+    }, [search, sync.snapshot, sync.loading, sync.error, sync.values, setGetUsers])
 
     return (
         <div className="App">
@@ -46,7 +42,7 @@ export default function Home({ name, handleSignOut, setGetUsers, data, setData, 
                 <input className='search' value={search} onChange={handleSearch} placeholder="Search" type="text" />
             </nav>
             <div className='user-container'>
-                <br/>
+                <br />
                 <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
                 <div className='messages'>{all}</div>
                 <Form text={data.text} action={addUser} data={data} setData={setData} />
