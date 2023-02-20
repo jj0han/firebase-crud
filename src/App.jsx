@@ -61,9 +61,22 @@ export default function App() {
     setUpdateData({ id: id, text: text })
   }
 
+  const editMessages = document.querySelectorAll(".user-message__edit")
+  console.log(editMessages)
+
+  editMessages.forEach((editMessage) => {
+    editMessage.parentNode.addEventListener("mouseover", () => {
+      editMessage.style.opacity = 1
+    })
+
+    editMessage.parentNode.addEventListener("mouseout", () => {
+      editMessage.style.opacity = 0
+    })
+  })
+
   const all = getUsers.map((doc) => {
     if (!user) return ""
-    
+
     return (
       <div className={auth.currentUser.uid === doc.uid ? "user-message" : "user-message"} key={doc.id}>
         <div className='user-message__container'>
@@ -73,12 +86,20 @@ export default function App() {
             <p className='user-message__text'>{doc.text}</p>
           </div>
         </div>
-        <div className='user-message__edit' style={auth.currentUser.uid === doc.uid ? { display: "block" } : { display: "none" }}>
-          <button className='button-update'>
-            <Link onClick={updateUser} to={`/update/${doc.id}`} id={doc.id}>Update</Link>
-          </button>
-          <button className='button-delete' id={doc.id} onClick={deleteUser}>Delete</button>
-        </div>
+        {
+          //garantia que o usuário poderá somente editar e deletar as próprias mensagens
+          auth.currentUser.uid === doc.uid ? (
+            <div className='user-message__edit'>
+              <button title='edit' className='button-update'>
+                <Link onClick={updateUser} to={`/update/${doc.id}`} id={doc.id}></Link>
+              </button>
+              <button title='delete' className='button-delete' id={doc.id} onClick={deleteUser}></button>
+            </div>
+          ) : (
+            ""
+          )
+        }
+
       </div>
     )
   })
@@ -87,8 +108,8 @@ export default function App() {
     <Routes>
       {user ? (
         <>
-          <Route path='/firebase-crud' element={<Home sync={sync} handleSignOut={() => handleSignOut(setUser)} setGetUsers={setGetUsers} data={data} setData={setData} addUser={addUser} all={all} />} />
-          <Route path='update/*' element={<Update id={updateData.id} text={updateData.text} age={updateData.age} />} />
+          <Route path='firebase-crud' element={<Home sync={sync} handleSignOut={() => handleSignOut(setUser)} setGetUsers={setGetUsers} data={data} setData={setData} addUser={addUser} all={all} />} />
+          <Route path='/update/*' element={<Update id={updateData.id} text={updateData.text} age={updateData.age} />} />
           <Route path='*' element={<Navigate to={"/firebase-crud"} />} />
         </>
       ) : (

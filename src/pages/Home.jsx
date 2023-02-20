@@ -32,9 +32,9 @@ export default function Home({ sync, handleSignOut, setGetUsers, data, setData, 
             }
         }
         readUsers(search)
-
+        
     }, [search, sync.snapshot, sync.loading, sync.error, sync.values, setGetUsers])
-
+    
     return (
         <div className="App">
             <nav className='nav'>
