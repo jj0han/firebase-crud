@@ -123,12 +123,17 @@
 }
 
 .button-submit {
-  padding: 15px;
-  background-color: #40444b;
-  color: #d1d1d1;
-  font-weight: bold;
   border-radius: 0 9px 9px 0;
+  background-color: #40444b;
+  background-image: url("./images/icons8-enviado-48.png");
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+  font-weight: bold;
+  height: 100%;
+  padding: 15px;
   transition: .2s ease-out;
+  max-width: 40px;
 }
 
 .button-update,

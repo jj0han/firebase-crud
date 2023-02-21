@@ -9,7 +9,7 @@ export default function Form({ text, action, data, setData }) {
   return (
     <form className='form' onSubmit={action}>
       <input required={true} autoComplete={"off"} className='input' onChange={handleChange} placeholder={"Message"} value={text} name='text' type="text" />
-      <button className='button-submit' type="submit">Submit</button>
+      <button title="send" className='button-submit' type="submit"></button>
     </form>
   )
 }
