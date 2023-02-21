@@ -93,14 +93,14 @@ export default function App() {
     <Routes>
       {user ? (
         <>
-          <Route path='/' element={<Home sync={sync} handleSignOut={() => handleSignOut(setUser)} setGetUsers={setGetUsers} data={data} setData={setData} addUser={addUser} all={all} />} />
-          <Route path='update/*' element={<Update id={updateData.id} text={updateData.text} />} />
-          <Route path='*' element={<Navigate to={"/"} />} />
+          <Route path='/concord-chat' element={<Home sync={sync} handleSignOut={() => handleSignOut(setUser)} setGetUsers={setGetUsers} data={data} setData={setData} addUser={addUser} all={all} />} />
+          <Route path='concord-chat/update/*' element={<Update id={updateData.id} text={updateData.text} />} />
+          <Route path='*' element={<Navigate to={"/concord-chat"} />} />
         </>
       ) : (
         <>
-          <Route path='/signInWithGoogle' element={<SignIn handleSignInWithGoogle={() => handleSignInWithGoogle(setUser)} />} />
-          <Route path='*' element={<Navigate to={"/signInWithGoogle"} />} />
+          <Route path='concord-chat/sign-in-with-google' element={<SignIn handleSignInWithGoogle={() => handleSignInWithGoogle(setUser)} />} />
+          <Route path='*' element={<Navigate to={"concord-chat/sign-in-with-google"} />} />
         </>
       )
       }

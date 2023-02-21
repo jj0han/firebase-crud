@@ -12,7 +12,7 @@ export default function Update({ id, text }) {
         e.preventDefault()
         try {
             await updateDoc(doc(db, "data", id), data)
-            navigate('/')
+            navigate('concord-chat')
         } catch (err) {
             console.log(err)
         }
