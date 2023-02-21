@@ -8,11 +8,11 @@ export default function Update({ id, text }) {
     const [data, setData] = useState({ id: id, text: text })
     const navigate = useNavigate()
 
-    const updateUser = async (e) => {
+    const updateMessage = async (e) => {
         e.preventDefault()
         try {
             await updateDoc(doc(db, "data", id), data)
-            navigate('/firebase-crud')
+            navigate('/')
         } catch (err) {
             console.log(err)
         }
@@ -20,10 +20,10 @@ export default function Update({ id, text }) {
 
     return (
         <div className='user-container'>
-            <p>Updating <strong>{text}:</strong></p>
-            <Form text={data.text} action={updateUser} data={data} setData={setData} />
+            <p>Editing <strong>{text}:</strong></p>
+            <Form text={data.text} action={updateMessage} data={data} setData={setData} />
             <br/>
-            <Link to={'/firebase-crud'} className="button-cancel">Cancel</Link>
+            <Link to={'/'} className="button-cancel">Cancel</Link>
         </div>
     )
 }

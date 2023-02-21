@@ -32,9 +32,23 @@ export default function Home({ sync, handleSignOut, setGetUsers, data, setData, 
             }
         }
         readUsers(search)
-        
+
     }, [search, sync.snapshot, sync.loading, sync.error, sync.values, setGetUsers])
-    
+
+    useEffect(() => {
+        const editMessages = document.querySelectorAll(".user-message__edit")
+
+        editMessages.forEach((editMessage) => {
+            editMessage.parentElement.addEventListener("mouseover", () => {
+                editMessage.style.opacity = 1
+            })
+
+            editMessage.parentElement.addEventListener("mouseout", () => {
+                editMessage.style.opacity = 0
+            })
+        })
+    })
+
     return (
         <div className="App">
             <nav className='nav'>

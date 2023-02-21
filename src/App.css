@@ -87,20 +87,13 @@
 }
 
 .user-message {
-  padding: 10px;
+  padding: 5px;
+  margin: 10px 0 10px 0 ;
   color: #d1d1d1;
   display: flex;
   justify-content: space-between;
   position: relative;
 }
-
-/* .user-message:hover(:has(.user-message__edit)) {
-  opacity: 1;
-} */
-
-/* .user-message__edit:has(.user-message:hover) {
-  opacity: 1;
-} */
 
 .user-message__text {
   padding-top: 5px;
@@ -115,7 +108,8 @@
   border-radius: 5px;
   transition: .1s ease-out;
   position: absolute;
-  right: 0;
+  top: -20%;
+  right: 2%;
   opacity: 0;
   display: flex;
 }
@@ -142,9 +136,8 @@
   display: block;
   border-radius: 0;
   background-color: #2f313642;
-  width: 20px;
-  height: 20px;
   background-size: contain;
+  padding: 12px;
 }
 
 .button-update {
